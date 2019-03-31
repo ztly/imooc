@@ -2,7 +2,6 @@ from selenium import webdriver
 import time
 import random
 from PIL import Image
-import registerCode
 from findElement import FindElement 
 import random
 
@@ -44,8 +43,37 @@ class RegisterFuncton(object):
         print(size)
         img_orig = Image.open(filename)
         # 在原截图上截取验证码图片
-        img_final = img_orig.crop((left, top, right, bottom))
+        img_final = img_orig.crop((left*2, top*2, right*2, bottom*2))
         img_final.save(filename)
+
+    def main(self):
+        nickname = self.getRandom()
+        email = nickname + '@163.com'
+        code = None #识别后的验证码值
+        error_text = self.get_element('captcha_code-error')
+        filename = '/Documents/lab/imooc/img/error_screenshot.png'
+        self.get_element('register_email').send_keys(email)
+        self.get_element('register_nickname').send_keys(nickname)
+        self.get_element('register_password').send_keys('111111')
+        self.get_element('captcha_code').send_keys(code)
+        if error_text is None:
+            print('注册成功')
+        else:
+            print('验证码输入有误')
+            self.driver.save_screenshot(filename) # 验证失败后保存截图
+        self.get_element('register-btn').click()
+        time.sleep(5)
+        self.driver.close()
+
+
+
+if __name__ == "__main__":
+    regist_function = RegisterFuncton('http://www.5itest.cn/register?goto=/')
+    regist_function.main()
+
+
+
+
 
 
 

@@ -17,7 +17,7 @@ time.sleep(5)
 # 截取原图
 element = driver.find_element_by_id('getcode_num')
 driver.save_screenshot(
-    '/Users/edz/Documents/VS_Code/SeleniumPython/img/Register.png')
+    '/Documents/lab/imooc/img/Register.png')
 point = element.location  # 验证码图片左上角点的坐标
 left = point['x']
 top = point['y']
@@ -28,13 +28,13 @@ bottom = top + size['height']
 print('验证码图片的大小', size)
 # 打开原图
 img_orig = Image.open(
-    '/Users/edz/Documents/VS_Code/SeleniumPython/img/Register.png')
+    '/Documents/lab/imooc/img/Register.png')
 # 在原截图上截取验证码图片
 img_final = img_orig.crop((left*2, top*2, right*2, bottom*2))
 # img_final = img_orig.crop((680, 563, 809, 563))
-img_final.save('/Users/edz/Documents/VS_Code/SeleniumPython/img/CropRegister.png')
+img_final.save('/Documents/lab/imooc/img/CropRegister.png')
 # 图片转换文字
 #pytesseract.image_to_string(
-#    '/Users/edz/Documents/VS_Code/SeleniumPython/img/CropRegister.png')
+#    '/Documents/lab/imooc/img/CropRegister.png')
 time.sleep(5)
 driver.close()

@@ -1,4 +1,4 @@
-from util.ReadLocalElement import ReadConfig
+from util.readLocalElement import ReadConfig
 
 class FindElement(object):
     def __init__(self, driver):
