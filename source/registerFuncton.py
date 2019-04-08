@@ -7,15 +7,20 @@ import random
 
 
 class RegisterFuncton(object):
-    def __init__(self, url):
-        self.driver = self.get_driver(url)
+    def __init__(self, url, i):
+        self.driver = self.get_driver(url, i)
 
     # 打开浏览器
-    def get_driver(self, url):
-       driver = webdriver.Chrome()
-       driver.get(url)
-       driver.maximize_window()
-       return driver
+    def get_driver(self, url, i):
+        if i == 0:
+            driver = webdriver.Chrome()
+        elif i == 1:
+            driver = webdriver.Firefox()
+        elif i == 2:
+            driver = webdriver.Safari()
+            driver.get(url)
+        driver.maximize_window()
+        return driver
 
     def get_element(self, key):
         find_element = FindElement(self.driver)
@@ -68,8 +73,9 @@ class RegisterFuncton(object):
 
 
 if __name__ == "__main__":
-    regist_function = RegisterFuncton('http://www.5itest.cn/register?goto=/')
-    regist_function.main()
+    for i in range(3):
+        regist_function = RegisterFuncton('http://www.5itest.cn/register?goto=/', i)
+        regist_function.main()
 
 
 

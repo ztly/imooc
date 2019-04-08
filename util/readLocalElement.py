@@ -10,7 +10,6 @@ class ReadConfig:
         else:
             self.node = node
         self.data = self.load_ini(filename)
-        
 
     def load_ini(self, filename):
         parse = configparser.ConfigParser()
@@ -25,6 +24,6 @@ class ReadConfig:
 '''if __name__ == "__main__":
     filename = '/Users/edz/Documents/VS_Code/imooc/config/LocalElement.ini'
     paser = ReadConfig(filename)
-    mail = paser.get_data('username')
+    mail = paser.get_data('name')
     print(mail)'''
 

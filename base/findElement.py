@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/Users/edz/Documents/lab/imooc')
 from util.readLocalElement import ReadConfig
 
 class FindElement(object):
@@ -5,7 +7,8 @@ class FindElement(object):
         self.driver = driver
 
     def get_element(self, key):
-        config = ReadConfig()
+        filename = '/Users/edz/Documents/lab/imooc/config/LocalElement.ini'
+        config = ReadConfig(filename)
         datas = config.get_data(key)
         by, value = datas.split('>')
         try:
