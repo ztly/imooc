@@ -22,19 +22,19 @@ class RegisterHandle(object):
 
 	# 获取提示信息
 	def get_user_text(self, info):
-		if info == 'email_error':
-			element = self.register_p.get_email_error_element()
-		elif info == 'name_error':
-			element = self.register_p.get_name_error_element()
-		elif info == 'password_error':
-			element = self.register_p.get_password_error_element()
-		elif info == 'code_error':
-			element = self.register_p.get_code_error_element()
-		# 信息不为空时返回提示信息
-		if element != None:
-			return element.text
-		else:
-			return None
+		try:
+			if info == 'email_error':
+				text = self.register_p.get_email_error_element().text
+			elif info == 'name_error':
+				text = self.register_p.get_name_error_element().text
+			elif info == 'password_error':
+				text = self.register_p.get_password_error_element().text
+			elif info == 'code_error':
+				text = self.register_p.get_code_error_element().text
+		except:
+			text = None
+		return text
+		
 
 	# 点击注册按钮
 	def click_register_buttton(self):

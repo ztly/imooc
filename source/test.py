@@ -43,7 +43,7 @@ r = ShowapiRequest("http://route.showapi.com/184-5","91267","1dbeca97548a4923ade
 r.addBodyPara("typeId", "35")
 r.addBodyPara("convert_to_jpg", "0")
 r.addBodyPara("needMorePrecise", "0")
-r.addFilePara("image", r"/Users/edz/Documents/lab/imooc/img/CropRegister.png") #文件上传时设置
+r.addFilePara("img", r"/Users/edz/Documents/lab/imooc/img/CropRegister.png") #文件上传时设置
 res = r.post()
 print(res.text) # 返回信息
 

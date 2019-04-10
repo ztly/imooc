@@ -8,7 +8,7 @@ import HTMLTestRunner
 import os
 
 '''
-使用unittest前/后置方法、断言、报告生成等方法
+unittest前/后置方法、断言、报告生成、运行失败后截图
 '''
 class FirstCase(unittest.TestCase):
 
@@ -19,7 +19,12 @@ class FirstCase(unittest.TestCase):
 		self.login = RegisterBusiness(self.driver)
 	# 后置条件
 	def tearDown(self):
-		print('执行后置方法：关闭浏览器')
+		# 运行报错时保存截图
+		for case_name, error in self._outcome.errors:
+			if error:
+				case_name = self._testMethodName
+				self.driver.save_screenshot(os.path.join(os.getcwd()+"/report/"+case_name+".png"))
+		print('---------执行后置方法：关闭浏览器----------')
 		self.driver.close()
 
 	def test_login_email_err(self):
@@ -62,6 +67,9 @@ if __name__ == "__main__":
 	f = open(file_path,'wb')
 	suite = unittest.TestSuite()
 	suite.addTest(FirstCase('test_login_email_err'))
+	suite.addTest(FirstCase('test_password_err'))
+	suite.addTest(FirstCase('test_login_username_err'))
+	suite.addTest(FirstCase('test_code_err'))
 	# unittest.TextTestRunner().run(suite)
 	runner = HTMLTestRunner.HTMLTestRunner(stream=f,title="This is first report", description="第一个测试报告", verbosity=2)
 	runner.run(suite)

@@ -1,6 +1,7 @@
 import sys
 sys.path.append('/Users/edz/Documents/lab/imooc')
 from util.readLocalElement import ReadConfig
+import os
 
 class FindElement(object):
     def __init__(self, driver):
@@ -23,6 +24,8 @@ class FindElement(object):
             elif by == 'xpath':
                 element = self.driver.find_element_by_xpath(value)
         except:
+            img_path = os.path.join(os.getcwd()+"/img/%s.png" %value)
+            self.driver.save_screenshot(img_path)
             element = None
         return element
 
