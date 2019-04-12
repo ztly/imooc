@@ -2,8 +2,10 @@ import time
 import random
 from PIL import Image
 from selenium import webdriver
-import pytesseract
-from ShowapiRequest import ShowapiRequest
+import os
+import sys
+sys.path.append('/Users/edz/Documents/lab/imooc')
+from util.ShowapiRequest import ShowapiRequest
 
 
 
@@ -12,7 +14,7 @@ driver = webdriver.Chrome()
 
 def initDriver():
     driver.get('http://www.5itest.cn/register?goto=/')
-    driver.maximize_window()
+    driver.fullscreen_window()
     time.sleep(2)
 
 
@@ -39,10 +41,10 @@ def getImg(file_name):
     print(size)
     img_orig = Image.open(file_name)
     # 在原截图上截取验证码图片
-    img_final = img_orig.crop((left, top, right, bottom))
+    img_final = img_orig.crop((left*2, top*2, right*2, bottom*2))
     img_final.save(file_name)
 
-
+# 解析验证码图片
 def parseImg(self, file_name):
     self.getImg(file_name)
     r = ShowapiRequest("http://route.showapi.com/184-5","91267","1dbeca97548a4923adea21e917b3df8b" )
@@ -51,19 +53,19 @@ def parseImg(self, file_name):
     r.addBodyPara("needMorePrecise", "0")
     r.addFilePara("image", file_name) #文件上传时设置
     res = r.post()
-    print(res.text) # 返回信息
-    return res
+    return res.json()['showapi-res_body']['Result']
+
 
 def run_main():
     initDriver()
     user_name = getRandom()
-    filename = ''
+    img = os.path.join(os.getcwd()+'img/CropRegister.png')
     user_email = user_name + '@163.com'
     getElement('register_email').send_keys(user_email)
     getElement('register_nickname').send_keys(user_name)
     getElement('register_password').send_keys('111111')
-    getImg(filename)
-    text = parseImg('')
+    getImg(img)
+    text = parseImg(img)
     getElement('captcha_code').send_keys(text)
     getElement('register-btn').click()
     driver.close()

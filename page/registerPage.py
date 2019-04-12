@@ -13,7 +13,7 @@ class RegisterPage:
 	def get_password(self):
 		return self.fd.get_element('password')
 
-	def get_code(self):
+	def get_code_element(self):
 		return self.fd.get_element('captcha')
 
 	def get_email_error_element(self):

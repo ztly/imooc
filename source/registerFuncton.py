@@ -1,8 +1,10 @@
 from selenium import webdriver
 import time
+import sys
+sys.path.append('/Users/edz/Documents/lab/imooc')
 import random
 from PIL import Image
-from findElement import FindElement 
+from base.findElement import FindElement 
 import random
 
 

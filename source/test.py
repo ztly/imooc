@@ -2,7 +2,10 @@ from selenium import webdriver
 import time
 from PIL import Image
 import pytesseract
-from ShowapiRequest import ShowapiRequest
+import sys
+sys.path.append('/Users/edz/Documents/lab/imooc')
+from util.ShowapiRequest import ShowapiRequest
+import os
 # from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.common.keys import Keys
 
@@ -37,13 +40,14 @@ img_final.save('/Users/edz/Documents/lab/imooc/img/CropRegister.png')
 # 图片转换文字
 #pytesseract.image_to_string(
 #    '/Documents/lab/imooc/img/CropRegister.png')
-time.sleep(5)
-'''
+time.sleep(5)'''
+
+
 r = ShowapiRequest("http://route.showapi.com/184-5","91267","1dbeca97548a4923adea21e917b3df8b" )
 r.addBodyPara("typeId", "35")
 r.addBodyPara("convert_to_jpg", "0")
 r.addBodyPara("needMorePrecise", "0")
-r.addFilePara("img", r"/Users/edz/Documents/lab/imooc/img/CropRegister.png") #文件上传时设置
+r.addFilePara("image", r"/Users/edz/Documents/lab/imooc/img/CropRegister.png") #文件上传时设置
 res = r.post()
 print(res.text) # 返回信息
 

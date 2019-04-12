@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>This is first report</h1>
-<p class='attribute'><strong>Start Time:</strong> 2019-04-10 17:38:34</p>
-<p class='attribute'><strong>Duration:</strong> 0:02:16.239100</p>
-<p class='attribute'><strong>Status:</strong> Pass 3 Failure 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2019-04-12 12:20:18</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:12.562821</p>
+<p class='attribute'><strong>Status:</strong> Pass 1 Failure 1</p>
 
 <p class='description'>第一个测试报告</p>
 </div>
@@ -222,110 +222,66 @@ function showOutput(id, name) {
 </tr>
 
 <tr class='failClass'>
-    <td>FirstCase</td>
-    <td>4</td>
-    <td>3</td>
+    <td>FirstDdtCase</td>
+    <td>2</td>
+    <td>1</td>
     <td>1</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
 </tr>
 
-<tr id='ft1.1' class='none'>
-    <td class='failCase'><div class='testcase'>test_login_email_err</div></td>
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_case_1___1____zhou____111111_____Users_edz_Documents_lab_imooc_img_CropRegister_png____email_error____请输入有效的电子邮件地址__</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_register_case_2___1292871494_qq_com____zhou____111111_____Users_edz_Documents_lab_imooc_img_CropRegister_png____email_error____请输入有效的电子邮件地址__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
         fail</a>
 
-    <div id='div_ft1.1' class="popup_window">
+    <div id='div_ft1.2' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-ft1.1: Traceback (most recent call last):
-  File "/Users/edz/Documents/lab/imooc/case/firstCase.py", line 32, in test_login_email_err
-    self.assertFalse(email_error, '邮箱验证成功')
-AssertionError: True is not false : 邮箱验证成功
+ft1.2: Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/edz/Documents/lab/imooc/case/firstDdtCase.py", line 45, in test_register_case
+    self.assertFalse(email_error, "测试失败")
+AssertionError: True is not false : 测试失败
 Traceback (most recent call last):
-  File "/Users/edz/Documents/lab/imooc/case/firstCase.py", line 32, in test_login_email_err
-    self.assertFalse(email_error, '邮箱验证成功')
-AssertionError: True is not false : 邮箱验证成功
+  File "/usr/local/lib/python3.7/site-packages/ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/edz/Documents/lab/imooc/case/firstDdtCase.py", line 45, in test_register_case
+    self.assertFalse(email_error, "测试失败")
+AssertionError: True is not false : 测试失败
 
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
-</tr>
-
-<tr id='pt1.2' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_password_err</div></td>
-    <td colspan='5' align='center'>
-
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
-        pass</a>
-
-    <div id='div_pt1.2' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-pt1.2: 
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
-</tr>
-
-<tr id='pt1.3' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_login_username_err</div></td>
-    <td colspan='5' align='center'>
-
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
-        pass</a>
-
-    <div id='div_pt1.3' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-pt1.3: 
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
-</tr>
-
-<tr id='pt1.4' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_code_err</div></td>
-    <td colspan='5' align='center'>
-
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
-        pass</a>
-
-    <div id='div_pt1.4' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-pt1.4: 
 
         </pre>
     </div>
@@ -336,8 +292,8 @@ pt1.4:
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>4</td>
-    <td>3</td>
+    <td>2</td>
+    <td>1</td>
     <td>1</td>
     <td>0</td>
     <td>&nbsp;</td>
