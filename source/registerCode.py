@@ -45,8 +45,8 @@ def getImg(file_name):
     img_final.save(file_name)
 
 # 解析验证码图片
-def parseImg(self, file_name):
-    self.getImg(file_name)
+def parseImg(file_name):
+    getImg(file_name)
     r = ShowapiRequest("http://route.showapi.com/184-5","91267","1dbeca97548a4923adea21e917b3df8b" )
     r.addBodyPara("typeId", "35")
     r.addBodyPara("convert_to_jpg", "0")

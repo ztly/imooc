@@ -2,13 +2,15 @@ import sys
 sys.path.append('/Users/edz/Documents/lab/imooc')
 from business.registerBusiness import RegisterBusiness
 from selenium import webdriver
+from util.excel_util import ExcelUtil
 import unittest
 import time
 import HTMLTestRunner
 import os
 import ddt
 
-
+ex = ExcelUtil()
+data = ex.get_data()
 @ddt.ddt
 class FirstDdtCase(unittest.TestCase):
 	# 用例的前置条件
@@ -32,6 +34,8 @@ class FirstDdtCase(unittest.TestCase):
 		self.driver.close()
    
 	# 邮箱、用户名、密码、验证码/错误信息定位/错误信息提示
+	
+	'''
 	@ddt.data(
 		['1', 'zhou', '111111', '/Users/edz/Documents/lab/imooc/img/CropRegister.png', 'email_error','请输入有效的电子邮件地址'],
 		['1292871494@qq.com', 'zhou', '111111', '/Users/edz/Documents/lab/imooc/img/CropRegister.png', 'email_error','请输入有效的电子邮件地址']
@@ -40,7 +44,12 @@ class FirstDdtCase(unittest.TestCase):
 		)
 	
 	@ddt.unpack
-	def test_register_case(self, email, name, password, file_name, errElement, errText):
+	'''
+	
+	@ddt.data(*data)
+	def test_register_case(self, data):
+		email, name, password, file_name, errElement, errText = data
+		print("file_name:", file_name)
 		email_error = self.login.register_function(email, name, password, file_name, errElement, errText)
 		self.assertFalse(email_error, "测试失败")
 		# if email_error == True:
