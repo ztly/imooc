@@ -1,11 +1,12 @@
 import sys
-sys.path.append('/Users/edz/Documents/lab/imooc')
+import os
+sys.path.append(os.path.join(os.getcwd()))
 from business.registerBusiness import RegisterBusiness
 from selenium import webdriver
 import unittest
 import time
 import HTMLTestRunner
-import os
+
 
 '''
 unittest前/后置方法、断言、报告生成、运行失败后截图

@@ -1,14 +1,15 @@
 import sys
-sys.path.append('/Users/edz/Documents/lab/imooc')
-from util.readLocalElement import ReadConfig
 import os
+sys.path.append(os.path.join(os.getcwd()))
+from util.readLocalElement import ReadConfig
+
 
 class FindElement(object):
     def __init__(self, driver):
         self.driver = driver
 
     def get_element(self, key):
-        filename = '/Users/edz/Documents/lab/imooc/config/LocalElement.ini'
+        filename =os.path.join(os.getcwd()+'/config/LocalElement.ini')
         config = ReadConfig(filename)
         datas = config.get_data(key)
         by, value = datas.split('>')

@@ -1,12 +1,12 @@
 import sys
-sys.path.append('/Users/edz/Documents/lab/imooc')
+import os
+sys.path.append(os.path.join(os.getcwd()))
 from business.registerBusiness import RegisterBusiness
 from selenium import webdriver
 from util.excel_util import ExcelUtil
 import unittest
 import time
 import HTMLTestRunner
-import os
 import ddt
 
 ex = ExcelUtil()
@@ -35,8 +35,8 @@ class FirstDdtCase(unittest.TestCase):
    
 	# 邮箱、用户名、密码、验证码/错误信息定位/错误信息提示
 	
-	'''
-	@ddt.data(
+	
+	'''	@ddt.data(
 		['1', 'zhou', '111111', '/Users/edz/Documents/lab/imooc/img/CropRegister.png', 'email_error','请输入有效的电子邮件地址'],
 		['1292871494@qq.com', 'zhou', '111111', '/Users/edz/Documents/lab/imooc/img/CropRegister.png', 'email_error','请输入有效的电子邮件地址']
 
@@ -44,7 +44,13 @@ class FirstDdtCase(unittest.TestCase):
 		)
 	
 	@ddt.unpack
-	'''
+	def test_register_case(self, data):
+		email, name, password, file_name, errElement, errText = data
+		print("file_name:", file_name)
+		email_error = self.login.register_function(email, name, password, file_name, errElement, errText)
+		self.assertFalse(email_error, "测试失败")
+		# if email_error == True:
+		# 	print('邮箱验证case失败！')'''
 	
 	@ddt.data(*data)
 	def test_register_case(self, data):
@@ -64,3 +70,4 @@ if __name__ == "__main__":
 	suite = unittest.TestLoader().loadTestsFromTestCase(FirstDdtCase)
 	runner = HTMLTestRunner.HTMLTestRunner(stream=f,title="This is first report", description="第一个测试报告", verbosity=2)
 	runner.run(suite)
+

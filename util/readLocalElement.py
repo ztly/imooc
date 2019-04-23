@@ -1,10 +1,10 @@
 import configparser
-
+import os
 
 class ReadConfig:
     def __init__(self, filename=None, node=None):
         if filename is None:
-            filename ='/Users/edz/Documents/VS_Code/SeleniumPython/config/LocalElement.ini'
+            filename =os.path.join(os.getcwd() + '/config/LocalElement.ini')
         if node == None:
             self.node = 'element'
         else:

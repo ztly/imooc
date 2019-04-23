@@ -1,7 +1,5 @@
-import sys
-sys.path.append('/Users/edz/Documents/lab/imooc')
 from PIL import Image
-import os
+
 from util.ShowapiRequest import ShowapiRequest
 import time
 

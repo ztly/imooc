@@ -1,5 +1,6 @@
 import sys
-sys.path.append('/Users/edz/Documents/lab/imooc')
+import os
+sys.path.append(os.path.join(os.getcwd()))
 from page.registerPage import RegisterPage
 from util.getCode import GetCode
 import time
