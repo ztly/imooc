@@ -44,7 +44,7 @@ class ExcelUtil:
     
     # 写入数据
     def write_value(self, row, col, value):
-        read_value = self.data
+        read_value = xlrd.open_workbook(self.excel_path)
         write_data = copy(read_value)
         write_data.get_sheet(0).write(row, col, value)
         write_data.save(self.excel_path)
