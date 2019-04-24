@@ -34,7 +34,7 @@ class ActionMethod:
         time.sleep(3)
         
     # 关闭浏览器
-    def close_driver(self, *args):
+    def close_driver(self):
         self.driver.close()
 
     # 获取title
