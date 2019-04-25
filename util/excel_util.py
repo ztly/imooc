@@ -1,4 +1,5 @@
 from xlutils.copy import copy
+import xlwt 
 import xlrd
 import os
 
@@ -16,7 +17,7 @@ class ExcelUtil:
         # 行数
         self.rows = self.table.nrows
         # [[],[],[]]
-    
+
     # 获取表格行数
     def get_lines(self):
         rows = self.table.nrows
@@ -50,6 +51,7 @@ class ExcelUtil:
         write_data.save(self.excel_path)
 
 if __name__ == "__main__":
-    ex = ExcelUtil()
-    print(ex.get_data())
-    ex.write_value(0,8,"test")
+    file_path = os.path.join(os.getcwd()+'/config/keyword.xlsx')
+    ex = ExcelUtil(excl_path = file_path)
+    ex.write_value(1,9,"test")
+    print("行数--------》", ex.rows)

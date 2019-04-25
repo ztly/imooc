@@ -1,9 +1,11 @@
 from selenium import webdriver
+import sys
+import os
+sys.path.append(os.path.join(os.getcwd()))
 from base.findElement import FindElement
 import time
 class ActionMethod:
-    def __init__(self):
-        pass
+
     # 打开浏览器
     def openBroswer(self,broswer):
         if broswer == 'chrome':
@@ -31,12 +33,14 @@ class ActionMethod:
     
     # 等待
     def sleep_time(self):
-        time.sleep(3)
+        time.sleep(10)
         
     # 关闭浏览器
-    def close_driver(self, *args):
+    def close_driver(self):
         self.driver.close()
 
     # 获取title
     def get_title(self):
-        return self.driver.title
+        title = self.driver.title
+        print('title--------->', title)
+        return title

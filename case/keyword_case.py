@@ -27,17 +27,21 @@ class KeyWordCase:
                     # 预期结果值
                     except_result = handle_excl.get_col_value(i, 8)
                     self.run_method(method, send_value, handle_value)
-
                     if except_result != '':
                         except_value = self.get_except_value(except_result)
                         if except_value[0] == 'text':
+                            print('text的except_method------>', except_method)
                             result = self.run_method(except_method)
+                            print('action_method中运行的方法名：--------->', getattr(self.action_method, except_method))
+                            print('text result------->', result)
                             if except_value[1] in result:
                                 handle_excl.write_value(i, 9, 'pass')
                             else:
                                 handle_excl.write_value(i, 9, 'fail')
                         elif except_value[0] == 'element':
-                            result = self.run_method(except_value[1], except_method)
+                            result = self.run_method(except_method, except_value[1])
+                            print('element result------->', result)
+
                             if result:
                                 handle_excl.write_value(i, 9, 'pass')
                             else:
@@ -58,7 +62,7 @@ class KeyWordCase:
         elif send_value != '' and handle_value != '' :
             result = method_value(handle_value, send_value)
         # 
-        elif send_value != '' and handle_value != '':
+        elif send_value != '' and handle_value == '':
             result = method_value(send_value)
         # 关闭浏览器时，方法没有参数
         else:
