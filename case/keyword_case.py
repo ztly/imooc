@@ -47,7 +47,7 @@ class KeyWordCase:
                             else:
                                 handle_excl.write_value(i, 9, 'fail')
 
- 
+
     #获取预期结果值
     def get_except_value(self, data):
         return data.split('=')

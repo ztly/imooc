@@ -6,18 +6,29 @@ from selenium import webdriver
 import unittest
 import time
 import HTMLTestRunner
+from log.user_log import UserLog
+
+
 
 
 '''
 unittest前/后置方法、断言、报告生成、运行失败后截图
 '''
 class FirstCase(unittest.TestCase):
+	@classmethod
+	def setUpClass(cls):
+		cls.log = UserLog()
+		cls.logger = cls.log.get_log()
+	@classmethod
+	def tearDownClass(cls):
+		cls.log.close_handle()
 
 	# 前置条件
 	def setUp(self):
 		self.driver = webdriver.Chrome()
 		self.driver.fullscreen_window()
 		self.driver.get('http://www.5itest.cn/register?goto=/')
+		self.logger.info("tihs is my first log")
 		self.login = RegisterBusiness(self.driver)
 		self.file_name = os.path.join(os.getcwd()+'/img/'+'CropRegister.png')
 	# 后置条件
@@ -29,6 +40,7 @@ class FirstCase(unittest.TestCase):
 				self.driver.save_screenshot(os.path.join(os.getcwd()+"/report/"+case_name+".png"))
 		print('---------执行后置方法：关闭浏览器----------')
 		self.driver.close()
+
 
 	def test_login_email_err(self):
 		email_error = self.login.check_email('12', 'tingJio', '1111234', self.file_name)
@@ -70,9 +82,9 @@ if __name__ == "__main__":
 	f = open(file_path,'wb')
 	suite = unittest.TestSuite()
 	suite.addTest(FirstCase('test_login_email_err'))
-	# suite.addTest(FirstCase('test_password_err'))
-	# suite.addTest(FirstCase('test_login_username_err'))
+	suite.addTest(FirstCase('test_password_err'))
+	suite.addTest(FirstCase('test_login_username_err'))
 	# suite.addTest(FirstCase('test_code_err'))
 	# unittest.TextTestRunner().run(suite)
 	runner = HTMLTestRunner.HTMLTestRunner(stream=f,title="This is first report", description="第一个测试报告", verbosity=2)
-	runner.run(suite)
+	runner.run(suite) 
