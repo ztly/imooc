@@ -4,6 +4,7 @@ sys.path.append(os.path.join(os.getcwd()))
 from util.excel_util import ExcelUtil
 from mykeyword.actionMethod import ActionMethod
 class KeyWordCase:
+    
     def run_main(self):
         self.action_method = ActionMethod()
         file_path = os.path.join(os.getcwd()+'/config/keyword.xlsx')
