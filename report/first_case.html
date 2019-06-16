@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>This is first report</h1>
-<p class='attribute'><strong>Start Time:</strong> 2019-04-23 14:11:01</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:18.344891</p>
-<p class='attribute'><strong>Status:</strong> Error 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2019-04-28 18:22:30</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:38.936583</p>
+<p class='attribute'><strong>Status:</strong> Failure 3</p>
 
 <p class='description'>第一个测试报告</p>
 </div>
@@ -221,22 +221,22 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='errorClass'>
-    <td>FirstDdtCase</td>
-    <td>1</td>
+<tr class='failClass'>
+    <td>FirstCase</td>
+    <td>3</td>
     <td>0</td>
+    <td>3</td>
     <td>0</td>
-    <td>1</td>
-    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
 </tr>
 
 <tr id='ft1.1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_register_case_1__123_0___zhouting___111111_0____Users_tingjio_Documents_lab_practice_img_CropRegister_png____email_error____请输入有效的电子邮件地址__</div></td>
+    <td class='failCase'><div class='testcase'>test_login_email_err</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
     <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
-        error</a>
+        fail</a>
 
     <div id='div_ft1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
@@ -246,37 +246,77 @@ function showOutput(id, name) {
         <pre>
         
 ft1.1: Traceback (most recent call last):
-  File "/usr/local/lib/python3.7/site-packages/ddt.py", line 145, in wrapper
-    return func(self, *args, **kwargs)
-  File "/Users/tingjio/Documents/lab/practice/case/firstDdtCase.py", line 59, in test_register_case
-    email_error = self.login.register_function(email, name, password, file_name, errElement, errText)
-  File "/Users/tingjio/Documents/lab/practice/business/registerBusiness.py", line 57, in register_function
-    self.base_login(email, name, password, file_name)
-  File "/Users/tingjio/Documents/lab/practice/business/registerBusiness.py", line 10, in base_login
-    self.register_h.send_user_email(email)
-  File "/Users/tingjio/Documents/lab/practice/handle/registerHandle.py", line 15, in send_user_email
-    self.register_p.get_email_element().send_keys(email)
-  File "/usr/local/lib/python3.7/site-packages/selenium/webdriver/remote/webelement.py", line 478, in send_keys
-    {'text': "".join(keys_to_typing(value)),
-  File "/usr/local/lib/python3.7/site-packages/selenium/webdriver/common/utils.py", line 150, in keys_to_typing
-    for i in range(len(val)):
-TypeError: object of type 'float' has no len()
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 47, in test_login_email_err
+    self.assertFalse(email_error, '邮箱验证成功')
+AssertionError: True is not false : 邮箱验证成功
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.7/site-packages/ddt.py", line 145, in wrapper
-    return func(self, *args, **kwargs)
-  File "/Users/tingjio/Documents/lab/practice/case/firstDdtCase.py", line 59, in test_register_case
-    email_error = self.login.register_function(email, name, password, file_name, errElement, errText)
-  File "/Users/tingjio/Documents/lab/practice/business/registerBusiness.py", line 57, in register_function
-    self.base_login(email, name, password, file_name)
-  File "/Users/tingjio/Documents/lab/practice/business/registerBusiness.py", line 10, in base_login
-    self.register_h.send_user_email(email)
-  File "/Users/tingjio/Documents/lab/practice/handle/registerHandle.py", line 15, in send_user_email
-    self.register_p.get_email_element().send_keys(email)
-  File "/usr/local/lib/python3.7/site-packages/selenium/webdriver/remote/webelement.py", line 478, in send_keys
-    {'text': "".join(keys_to_typing(value)),
-  File "/usr/local/lib/python3.7/site-packages/selenium/webdriver/common/utils.py", line 150, in keys_to_typing
-    for i in range(len(val)):
-TypeError: object of type 'float' has no len()
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 47, in test_login_email_err
+    self.assertFalse(email_error, '邮箱验证成功')
+AssertionError: True is not false : 邮箱验证成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_password_err</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        fail</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 57, in test_password_err
+    self.assertFalse(password_error, '密码验证成功')
+AssertionError: True is not false : 密码验证成功
+Traceback (most recent call last):
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 57, in test_password_err
+    self.assertFalse(password_error, '密码验证成功')
+AssertionError: True is not false : 密码验证成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_username_err</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.3')" >
+        fail</a>
+
+    <div id='div_ft1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.3: Traceback (most recent call last):
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 53, in test_login_username_err
+    self.assertFalse(name_error, '用户名验证成功')
+AssertionError: True is not false : 用户名验证成功
+Traceback (most recent call last):
+  File "/Users/edz/Documents/lab/practice/case/firstCase.py", line 53, in test_login_username_err
+    self.assertFalse(name_error, '用户名验证成功')
+AssertionError: True is not false : 用户名验证成功
 
 
         </pre>
@@ -288,10 +328,10 @@ TypeError: object of type 'float' has no len()
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>1</td>
+    <td>3</td>
     <td>0</td>
+    <td>3</td>
     <td>0</td>
-    <td>1</td>
     <td>&nbsp;</td>
 </tr>
 </table>
